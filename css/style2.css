@@ -1,0 +1,66 @@
+/*viết mã css*/
+*{
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.5;
+    color:black;
+}
+
+div.container{
+    margin:15px;
+    background-color:LemonChiffon;
+    padding:25px;
+}
+
+form#frmLogin{
+    background-color:#1e88e5;
+    padding:30px;
+    width:600px;
+    max-width:100%;
+    margin:auto;
+    border-radius:10px;
+}
+
+#title{
+    text-transform:uppercase;
+    font-size:20px;
+    letter-spacing:3px;
+    text-align:center;
+    margin-bottom:20px;
+    color:white;
+}
+
+label{
+    display:block;
+    margin-top:10px;
+    color:white;
+}
+
+input.form-control{
+    width:100%;
+    margin:5px 0 15px;
+    padding:10px;
+    box-sizing:border-box;
+    border:none;
+    border-radius:5px;
+}
+
+input[type="submit"],
+input[type="reset"]{
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+input[type="submit"]{
+    background-color:green;
+    color:white;
+}
+
+input[type="reset"]{
+    background-color:red;
+    color:white;
+}
