@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Thiết kế trang giới thiệu thông tin sản phẩm</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="container">
+        <div id="product-list">
+            </div>
+    </div>
+
+    <script>
+        
+        const productListContainer = document.getElementById("product-list");
+
+        
+        const item = document.createElement("div");
+        item.setAttribute("class", "item");
+
+        // 3. Tạo một container chứa hình ảnh có class = "image"
+        const containerImage = document.createElement("div");
+        containerImage.setAttribute("class", "image");
+
+       
+        const img = document.createElement("img");
+        img.setAttribute("src", "../assets/images/stinhdau.jpg");
+        img.setAttribute("alt", "Nước ngọt giải khác Sting dâu");
+        img.setAttribute("style", "width:100%; max-width:150px"); 
+        
+        containerImage.appendChild(img);
+
+        // 4. Tạo 1 container chứa thông tin sản phẩm 
+        const containerInfo = document.createElement("div");
+        containerInfo.setAttribute("class", "info");
+
+        // Tên sản phẩm
+        const nameProduct = document.createElement("p");
+        nameProduct.innerHTML = "Nước Ngọt Có Gas Sting Dâu";
+
+        // Tạo <p> chứa giá sản phẩm 
+        const price = document.createElement("p");
+                                          
+		 price.innerHTML = "1Thùng/247.200k";
+
+        // Tạo <p> mô tả sản phẩm
+        const description = document.createElement("p");
+        description.innerHTML = "1Lon/10.800k";
+
+        // Tạo liên kết xem chi tiết 
+        const linkProduct = document.createElement("a");
+        linkProduct.innerHTML = "Xem chi tiết";
+        linkProduct.setAttribute("href", "page6.html");//sửa sau
+
+        // Gắn 4 con vào khung Info
+        containerInfo.appendChild(nameProduct);
+        containerInfo.appendChild(price);
+        containerInfo.appendChild(description);
+        containerInfo.appendChild(linkProduct);
+
+        // 5. Thêm các khung nhỏ vào item
+        item.appendChild(containerImage);
+        item.appendChild(containerInfo);
+
+        // 6. Đưa item vào vùng chứa product-list trên giao diện
+        productListContainer.appendChild(item);
+
+    </script>
+</body>
+</html>
