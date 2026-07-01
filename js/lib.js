@@ -1,90 +1,63 @@
 const product = [
     {
-        name: "Siting Dâu",
-        price: 247.200,
-        description: "Nước Ngọt Có Gas Siting Dâu",
-        image: "../assets/images/stinhdau.jpg",
-        link: "chi-tiet.html"
+        name: "Sting Dâu",
+        price: 247200,
+        description: "Nước Ngọt Có Gas Sting Dâu hương vị thơm ngon bùng nổ.",
+        image: "../assets/images/stinhdau.jpg"
     },
     {
-        name: "Siting Dâu 1",
-        price: 247.200,
-        description: "Nước Ngọt Có Gas Siting Dâu",
-        image: "../assets/images/stinhdau.jpg",
-        link: "chi-tiet.html"
+        name: "Sting Gold",
+        price: 208000,
+        description: "Nước Ngọt Có Gas Sting Gold tăng cường năng lượng.",
+        image: "../assets/images/nuocngotlonstinggold.jpg"
     },
     {
-        name: "Sitng Dâu 2",
-        price: 247.200,
-        description: "Nước Ngọt Có Gas Siting Dâu ",
-        image: "../assets/images/stinhdau.jpg",
-        link: "chi-tiet.html"
+        name: "Pepsi",
+        price: 180000,
+        description: "Nước Ngọt Không Calo Pepsi giải nhiệt sảng khoái không lo tăng cân.",
+        image: "../assets/images/pepsikhongcalothung.jpg"
     },
     {
-        name: "Sitng Dâu 3",
-        price: 247.200,
-        description: "Nước Ngọt Có Gas Siting Dâu",
-        image: "../assets/images/stinhdau.jpg",
-        link: "chi-tiet.html"
+        name: "7 Up",
+        price: 247200,
+        description: "Nước Ngọt Có Gas 7Up Vị Chanh thanh mát, đập tan cơn khát.",
+        image: "../assets/images/nuocngotsodachanh7up.jpg"
     }
 ];
 
-function createItem(obj) {
-    const productListContainer = document.getElementById("product-list");
-    
-    const item = document.createElement("div");
-    item.setAttribute("class", "item");
-
-    // Tạo một container chứa hình ảnh có class = "image"
-    const containerImage = document.createElement("div");
-    containerImage.setAttribute("class", "image");
-
-    const img = document.createElement("img");
-    img.setAttribute("src", obj.image); 
-    img.setAttribute("alt", "Nước ngọt giải khác Sting dâu");
-    img.setAttribute("style", "width:100%; max-width:150px"); 
-    
-    containerImage.appendChild(img);
-
-    // Tạo 1 container chứa thông tin sản phẩm 
-    const containerInfo = document.createElement("div");
-    containerInfo.setAttribute("class", "info");
-
-    // Tên sản phẩm
-    const nameProduct = document.createElement("h2");
-    nameProduct.innerHTML = obj.name;
-    nameProduct.setAttribute("class", "card-title text-danger");
-
-    // Tạo <p> chứa giá sản phẩm 
-    const price = document.createElement("p");
-    price.innerHTML = obj.price + "/1 Thùng";
-
-    // Tạo <p> mô tả sản phẩm
-    const description = document.createElement("p");
-    description.innerHTML = obj.description;
-
-    // Tạo liên kết xem chi tiết 
-    const linkProduct = document.createElement("a");
-    linkProduct.innerHTML = "Xem chi tiết";
-    linkProduct.setAttribute("href", obj.link);
-
-    // Gắn 4 con vào khung Info
-    containerInfo.appendChild(nameProduct);
-    containerInfo.appendChild(price);
-    containerInfo.appendChild(description);
-    containerInfo.appendChild(linkProduct);
-
-    // Thêm các khung nhỏ vào item
-    item.appendChild(containerImage);
-    item.appendChild(containerInfo);
-
-    // Đưa item vào vùng chứa product-list trên giao diện
-    productListContainer.appendChild(item);
-}
-
 function loadAllproducts(objArray) {
-    let i;
-    for (i = 0; i < objArray.length; i++) {
-        createItem(objArray[i]);
-    }
+    const productListContainer = document.getElementById("product-list");
+    // Tạo hàng (row) của Bootstrap, gộp khoảng cách các card (g-4)
+    productListContainer.className = "row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-3";
+    productListContainer.innerHTML = ""; // Xóa dữ liệu cũ nếu có
+
+    objArray.forEach((item, id) => {
+        // Tạo cột (col) cho mỗi sản phẩm
+        const col = document.createElement("div");
+        col.className = "col";
+
+        // Tạo cấu trúc Card đẹp mắt của Bootstrap 5
+        col.innerHTML = `
+            <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden text-center justify-content-between p-3">
+                <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
+                    <img src="${item.image}" class="card-img-top img-fluid" alt="${item.name}" style="max-height: 180px; object-fit: contain;">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between px-2 pb-0">
+                    <div>
+                        <h5 class="card-title fw-bold text-dark text-truncate mb-2">${item.name}</h5>
+                        <p class="card-text text-danger fw-bold fs-5 mb-2">${item.price.toLocaleString('vi-VN')} đ/Thùng</p>
+                        <p class="card-text text-muted small text-truncate-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 40px;">
+                            ${item.description}
+                        </p>
+                    </div>
+                    <div class="mt-3">
+                        <a href="trangchitiet.html?id=${id}" class="btn btn-outline-danger w-100 rounded-pill fw-bold py-2 transition-all">
+                            Xem chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+        productListContainer.appendChild(col);
+    });
 }
